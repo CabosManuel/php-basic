@@ -7,39 +7,29 @@ $store = 5;
 
 $nCombinations = 0;
 
-for ($i=1; $i <= $store; $i++) { 
+for ( $i = 1; $i <= $store; $i++ ) {
 	$nCombinations += 2 ** $i;
-	//echo 2 ** $i . "\n";
+	echo 2 ** $i . "\n";
 }
 
 echo "nCombinations = $nCombinations\n";
 
+$allCombinations = [];
 $rightCombinations = [];
 
-while (count($rightCombinations) < $nCombinations) { 
-	$array = [];
-	
-	while (!in_array($array, $rightCombinations)) {
-		
-		while (!(count($array) <= $store && array_sum($array) == $store)) {
-			array_push($array, rand(1, 2));
-	
-			if (array_sum($array) > $store) {
-				$array = [];
-			}
-		}
+while ( count($allCombinations) < $nCombinations ) {
 
+	// $combination = [];
+	array_push($allCombinations, rand(1,2));
+
+	if ( !in_array($combination, $rightCombinations) ) {
+		array_push($allCombinations, $combination);
 	}
-
-	array_push($rightCombinations, $array);
-
-	//echo implode(",", $array)."\n";
-	
-	/*
-	foreach ($rightCombinations as $i => $value) {
-		$rightCombinationsArrays[] = implode(",", $value);
-	}
-	*/
-	
 
 }
+
+// foreach ($ddd as $combination) {
+// 	foreach ($nCombination as ) {
+// 		echo implode(', ', $combination) . "\n";
+// 	}
+// }
