@@ -23,7 +23,9 @@ $player_letter = strtolower($player_letter);
 if (str_contains($chosen_word, $player_letter)) {
     // Verify all occurrences of the letter to replace it
     $offset = 0;
-    while ( $letter_position = strpos($chosen_word, $player_letter, $offset) !== false ) {
+    while (
+        ($letter_position = strpos($chosen_word, $player_letter, $offset)) !== false
+    ) {
         $discovered_letters[$letter_position] = $player_letter;
         $offset = $letter_position + 1;
     }
