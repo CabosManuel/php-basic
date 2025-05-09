@@ -20,4 +20,16 @@ echo $discovered_letters . "\n\n";
 $player_letter = readline("Write a letter: ");
 $player_letter = strtolower($player_letter);
 
-echo "\n";
+if (str_contains($chosen_word, $player_letter)) {
+    // Verify all occurrences of the letter to replace it
+    $offset = 0;
+    while ( $letter_position = strpos($chosen_word, $player_letter, $offset) !== false ) {
+        $discovered_letters[$letter_position] = $player_letter;
+        $offset = $letter_position + 1;
+    }
+} else {
+    $attempts++;
+    echo "❌ Wrong letter. You have " . (MAX_ATTEMPTS - $attempts) . " tries.";
+
+    sleep(2);
+}
